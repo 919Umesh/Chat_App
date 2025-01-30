@@ -10,7 +10,6 @@ class SplashScreenController extends GetxController {
     navigateToNextScreen();
   }
 
-
   void navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2));
     bool isLoggedIn = await SharedPreferencesHelper.getBool(key: 'isLogin');
