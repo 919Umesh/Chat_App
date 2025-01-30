@@ -8,7 +8,6 @@ class ApiEndpoint {
   static const String postUserLogin= '/users/loginUser';
   static const String createAccount= '/users/createUser/';
 
-  //Notes Section
   static const String getSemester= '/notes/semesters';
   static const String getSubject= '/notes/subjects/';
   static const String getNotes= '/notes/notes/';
