@@ -12,7 +12,6 @@ class SplashScreenController extends GetxController {
 
   void navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 2));
-    //To check whether the use is logged in or not
     bool isLoggedIn = await SharedPreferencesHelper.getBool(key: 'isLogin');
     if (isLoggedIn) {
       Get.offAllNamed(Routes.semesterPage);
