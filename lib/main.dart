@@ -21,7 +21,7 @@ class GetTest extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: lightTheme,
       initialBinding: AppBindings(),
-      initialRoute: Routes.semesterPage,
+      initialRoute: Routes.splashPagePath,
       getPages: Routes.routes,
     );
   }
