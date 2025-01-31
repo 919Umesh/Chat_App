@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'notes_getx.dart';
 
+//Modified Notes Screen
 class SemesterScreen extends GetView<GetNotesController> {
   const SemesterScreen({super.key});
 
