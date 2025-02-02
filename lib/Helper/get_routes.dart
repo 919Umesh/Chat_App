@@ -19,7 +19,7 @@ class Routes {
     GetPage(name: getCustomerPage, page: () =>  const GetCustomerPage()),
     GetPage(name: postLogin, page: () =>  const LoginLocalPage()),
     GetPage(name: createAccountPage, page: () =>  const CreateAccountPage()),
-    GetPage(name: semesterPage, page: () =>   SemesterScreen()),
+    GetPage(name: semesterPage, page: () =>   const SemesterScreen()),
     GetPage(name: splashPagePath, page: () =>   const SplashScreenPage()),
   ];
 }
