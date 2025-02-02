@@ -1,5 +1,4 @@
 import 'package:fluttertoast/fluttertoast.dart';
-
 import 'notes_getx.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
