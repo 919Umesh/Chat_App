@@ -1,3 +1,5 @@
+import 'package:fluttertoast/fluttertoast.dart';
+
 import 'notes_getx.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -36,8 +38,7 @@ class NotesScreen extends StatelessWidget {
                 ],
               ),
               onTap: () {
-                // Handle note file opening/downloading
-                debugPrint('Opening note: ${note.notesFile}');
+                Fluttertoast.showToast(msg: 'Opening note: ${note.notesFile}');
               },
             );
           },
