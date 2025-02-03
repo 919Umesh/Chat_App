@@ -71,9 +71,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
   }
 
   Widget _buildLoginForm(BuildContext context) {
+    double deviceHeight = MediaQuery.of(context).size.height;
     return Container(
       width: double.infinity,
-      margin: const EdgeInsets.only(top: 20),
+      height: deviceHeight,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.only(
@@ -103,7 +104,6 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             _buildLoginButton(),
             const SizedBox(height: 20),
             _buildSocialLogin(),
-            const SizedBox(height: 85),
           ],
         ),
       ),
