@@ -33,9 +33,11 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               children: [
                 const SizedBox(height: 40),
                 Row(
-                  children: [_buildHeader(),
+                  children: [
+                    _buildHeader(),
                     const SizedBox(width: 20),
-                    _buildIllustration(),],
+                    _buildIllustration(),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 _buildLoginForm(context),
@@ -74,7 +76,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
     double deviceHeight = MediaQuery.of(context).size.height;
     return Container(
       width: double.infinity,
-      height: deviceHeight,
+      height: deviceHeight / 1.4,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.only(
@@ -89,7 +91,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
           ),
         ],
       ),
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(30),
       child: FormBuilder(
         key: controller.formKeyLogin,
         child: Column(
@@ -134,10 +136,12 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide.none,
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           ),
-          validator: (value) =>
-          value == null || value.isEmpty ? 'Please enter a valid email.' : null,
+          validator: (value) => value == null || value.isEmpty
+              ? 'Please enter a valid email.'
+              : null,
         ),
       ],
     );
@@ -168,10 +172,12 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               borderRadius: BorderRadius.circular(15),
               borderSide: BorderSide.none,
             ),
-            contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            contentPadding:
+                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
           ),
-          validator: (value) =>
-          value == null || value.isEmpty ? 'Please enter your password.' : null,
+          validator: (value) => value == null || value.isEmpty
+              ? 'Please enter your password.'
+              : null,
         ),
       ],
     );
