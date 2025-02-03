@@ -32,14 +32,13 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 40),
-                Center(
-                  child: Row(
-                    children: [
-                      _buildHeader(),
-                      const SizedBox(width: 20),
-                      _buildIllustration(),
-                    ],
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildHeader(),
+                    const SizedBox(width: 20),
+                    _buildIllustration(),
+                  ],
                 ),
                 const SizedBox(height: 20),
                 _buildLoginForm(context),
@@ -57,24 +56,28 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       child: Text(
         'Login',
         style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-            fontFamily: 'inter'
-        ),
+            fontSize: 25,
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
+            fontFamily: 'inter'),
       ),
     );
   }
 
   Widget _buildIllustration() {
     return Center(
-      child: Image.asset(
-        'assets/images/login.png',
-        height: 150,
-        width: 120,
-      ),
+      child: Icon(Bootstrap.person,size: 145,)
     );
   }
+  // Widget _buildIllustration() {
+  //   return Center(
+  //     child: Image.asset(
+  //       'assets/images/login.png',
+  //       height: 150,
+  //       width: 120,
+  //     ),
+  //   );
+  // }
 
   Widget _buildLoginForm(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
@@ -104,10 +107,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             _buildEmailField(),
             const SizedBox(height: 20),
             _buildPasswordField(),
-            const SizedBox(height: 10),
+            const SizedBox(height: 15),
             _buildForgotPassword(),
             const SizedBox(height: 20),
-            _buildLoginButton(),
+            _buildLoginButton(context),
             const SizedBox(height: 20),
             _buildSocialLogin(),
           ],
@@ -129,23 +132,38 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               fontFamily: 'inter'),
         ),
         const SizedBox(height: 8),
-        FormBuilderTextField(
-          name: 'email',
-          decoration: InputDecoration(
-            hintText: 'example@email.com',
-            hintStyle: TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
-            filled: true,
-            fillColor: Colors.grey[100],
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-          validator: (value) => value == null || value.isEmpty
-              ? 'Please enter a valid email.'
-              : null,
+          child: FormBuilderTextField(
+            name: 'email',
+            decoration: InputDecoration(
+              hintText: 'example@email.com',
+              hintStyle:
+                  TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            ),
+            validator: (value) => value == null || value.isEmpty
+                ? 'Please enter a valid email.'
+                : null,
+          ),
         ),
       ],
     );
@@ -164,24 +182,39 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               fontFamily: 'inter'),
         ),
         const SizedBox(height: 8),
-        FormBuilderTextField(
-          name: 'password',
-          obscureText: true,
-          decoration: InputDecoration(
-            hintText: '******',
-            hintStyle: TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
-            filled: true,
-            fillColor: Colors.grey[100],
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15),
-              borderSide: BorderSide.none,
-            ),
-            contentPadding:
-                const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.3),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
           ),
-          validator: (value) => value == null || value.isEmpty
-              ? 'Please enter your password.'
-              : null,
+          child: FormBuilderTextField(
+            name: 'password',
+            obscureText: true,
+            decoration: InputDecoration(
+              hintText: '******',
+              hintStyle:
+                  TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
+              filled: true,
+              fillColor: Colors.white,
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(15),
+                borderSide: BorderSide.none,
+              ),
+              contentPadding:
+                  const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+            ),
+            validator: (value) => value == null || value.isEmpty
+                ? 'Please enter your password.'
+                : null,
+          ),
         ),
       ],
     );
@@ -190,40 +223,41 @@ class LoginLocalPage extends GetView<LoginLocalController> {
   Widget _buildForgotPassword() {
     return Align(
       alignment: Alignment.centerRight,
-      child: TextButton(
-        onPressed: () {
+      child: InkWell(
+        onTap: () {
           Fluttertoast.showToast(msg: 'Forget Password?');
         },
         child: const Text(
           'Forgot Password ?',
           style: TextStyle(
-            color: Colors.white,
-            fontSize: 14,
-          ),
+              fontSize: 14, color: AppColors.primary, fontFamily: 'inter'),
         ),
       ),
     );
   }
 
-  Widget _buildLoginButton() {
-    return SizedBox(
-      width: double.infinity,
-      height: 50,
-      child: ElevatedButton(
-        onPressed: _saveForm,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: AppColors.primary,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(25),
+  Widget _buildLoginButton(BuildContext context) {
+    double deviceWidth = MediaQuery.of(context).size.width;
+    return Center(
+      child: SizedBox(
+        width: deviceWidth / 1.8,
+        height: 50,
+        child: ElevatedButton(
+          onPressed: _saveForm,
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.primary,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(25),
+            ),
           ),
-        ),
-        child: const Text(
-          'Login',
-          style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-              fontFamily: 'inter'),
+          child: const Text(
+            'Login',
+            style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+                fontFamily: 'inter'),
+          ),
         ),
       ),
     );
