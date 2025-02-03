@@ -66,7 +66,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
 
   Widget _buildIllustration() {
     return const Center(
-      child: Icon(Bootstrap.person,size: 145,)
+      child: Icon(Bootstrap.person,size: 145,color: Colors.white,)
     );
   }
   // Widget _buildIllustration() {
