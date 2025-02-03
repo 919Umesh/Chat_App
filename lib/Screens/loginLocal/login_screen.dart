@@ -119,17 +119,17 @@ class LoginLocalPage extends GetView<LoginLocalController> {
         const Text(
           'Email:',
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primary,
-          ),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primary,
+              fontFamily: 'inter'),
         ),
         const SizedBox(height: 8),
         FormBuilderTextField(
           name: 'email',
           decoration: InputDecoration(
             hintText: 'example@email.com',
-            hintStyle: TextStyle(color: Colors.grey[400]),
+            hintStyle: TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
             filled: true,
             fillColor: Colors.grey[100],
             border: OutlineInputBorder(
@@ -154,10 +154,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
         const Text(
           'Password:',
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primary,
-          ),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: AppColors.primary,
+              fontFamily: 'inter'),
         ),
         const SizedBox(height: 8),
         FormBuilderTextField(
@@ -165,7 +165,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
           obscureText: true,
           decoration: InputDecoration(
             hintText: '******',
-            hintStyle: TextStyle(color: Colors.grey[400]),
+            hintStyle: TextStyle(color: Colors.grey[400], fontFamily: 'inter'),
             filled: true,
             fillColor: Colors.grey[100],
             border: OutlineInputBorder(
@@ -216,10 +216,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
         child: const Text(
           'Login',
           style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-            color: Colors.white,
-          ),
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+              fontFamily: 'inter'),
         ),
       ),
     );
