@@ -1,3 +1,4 @@
+import 'package:chat_app/Helper/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:chat_app/Screens/splash/splash_getx.dart';
@@ -10,7 +11,7 @@ class SplashScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final SplashScreenController controller = Get.put(SplashScreenController());
     return const Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: AppColors.primary,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
