@@ -69,15 +69,6 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       child: Icon(Bootstrap.person,size: 145,color: Colors.white,)
     );
   }
-  // Widget _buildIllustration() {
-  //   return Center(
-  //     child: Image.asset(
-  //       'assets/images/login.png',
-  //       height: 150,
-  //       width: 120,
-  //     ),
-  //   );
-  // }
 
   Widget _buildLoginForm(BuildContext context) {
     double deviceHeight = MediaQuery.of(context).size.height;
