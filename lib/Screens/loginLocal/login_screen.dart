@@ -65,7 +65,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
   }
 
   Widget _buildIllustration() {
-    return Center(
+    return const Center(
       child: Icon(Bootstrap.person,size: 145,)
     );
   }
