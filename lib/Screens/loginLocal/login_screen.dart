@@ -331,9 +331,11 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 40),
-                _buildHeader(),
-                const SizedBox(height: 20),
-                _buildIllustration(),
+                Row(
+                  children: [_buildHeader(),
+                    const SizedBox(width: 20),
+                    _buildIllustration(),],
+                ),
                 const SizedBox(height: 20),
                 _buildLoginForm(context),
               ],
@@ -361,7 +363,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
   Widget _buildIllustration() {
     return Center(
       child: Image.asset(
-        'assets/images/get1.jpg',
+        'assets/images/login.png',
         height: 200,
       ),
     );
@@ -400,6 +402,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             _buildLoginButton(),
             const SizedBox(height: 20),
             _buildSocialLogin(),
+            const SizedBox(height: 35),
           ],
         ),
       ),
