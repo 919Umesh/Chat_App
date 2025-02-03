@@ -32,12 +32,14 @@ class LoginLocalPage extends GetView<LoginLocalController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 40),
-                Row(
-                  children: [
-                    _buildHeader(),
-                    const SizedBox(width: 20),
-                    _buildIllustration(),
-                  ],
+                Center(
+                  child: Row(
+                    children: [
+                      _buildHeader(),
+                      const SizedBox(width: 20),
+                      _buildIllustration(),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 20),
                 _buildLoginForm(context),
@@ -55,9 +57,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       child: Text(
         'Login',
         style: TextStyle(
-          fontSize: 40,
+          fontSize: 25,
           fontWeight: FontWeight.bold,
           color: Colors.white,
+            fontFamily: 'inter'
         ),
       ),
     );
@@ -68,6 +71,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       child: Image.asset(
         'assets/images/login.png',
         height: 150,
+        width: 120,
       ),
     );
   }
