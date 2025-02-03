@@ -18,7 +18,7 @@ class SplashScreenController extends GetxController {
 
     Fluttertoast.showToast(msg: isLoggedIn.toString());
     if (isLoggedIn) {
-      Get.offAllNamed(Routes.semesterPage);
+      Get.offAllNamed(Routes.postLogin);
     }
     else {
       Get.offAllNamed(Routes.postLogin);

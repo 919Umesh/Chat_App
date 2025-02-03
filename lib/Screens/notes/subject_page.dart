@@ -19,7 +19,9 @@ class SubjectScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Subjects - $semester'),
+        title: Text('Subjects - $semester',style:const TextStyle(
+          fontFamily: 'roboto',
+        ),),
       ),
       body: Obx(
             () => controller.isLoadingSubjects.value
