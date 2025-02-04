@@ -20,6 +20,7 @@ class GetCustomerController extends GetxController {
     try {
       final model = await getCustomerRepository.getCustomer();
       if ( model.status == 200) {
+        //Assigning the incoming objects
         userList.value = model.users;
       } else {
         debugPrint('Error Occurred');
