@@ -53,13 +53,14 @@ class LoginLocalPage extends GetView<LoginLocalController> {
   Widget _buildHeader() {
     return const Padding(
       padding: EdgeInsets.only(left: 20),
+      //Using of the font
       child: Text(
         'Login',
         style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontFamily: 'inter'),
+            fontFamily: 'roboto'),
       ),
     );
   }
