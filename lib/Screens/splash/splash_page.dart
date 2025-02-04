@@ -17,13 +17,13 @@ class SplashScreenPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Icon(
-              Bootstrap.messenger,
+              Bootstrap.twitter_x,
               size: 100,
               color: Colors.pink,
             ),
             SizedBox(height: 20),
             Text(
-              'Test',
+              'Twitter',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
