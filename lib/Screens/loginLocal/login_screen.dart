@@ -60,7 +60,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             fontSize: 25,
             fontWeight: FontWeight.bold,
             color: Colors.white,
-            fontFamily: 'roboto'),
+            fontFamily: 'inter'),
       ),
     );
   }
