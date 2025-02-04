@@ -64,7 +64,7 @@ class SemesterScreen extends GetView<GetNotesController> {
                     ),
                   ),
                   trailing: const Icon(
-                    Icons.arrow_forward_ios,
+                    Icons.directions,
                     color: Colors.deepPurple,
                   ),
                   onTap: () {
