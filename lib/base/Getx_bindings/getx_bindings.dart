@@ -10,7 +10,6 @@ import '../../Screens/splash/splash_getx.dart';
 class AppBindings implements Bindings {
   @override
   void dependencies() {
-    //Bindings of controller
     Get.lazyPut<SplashScreenController>(() => SplashScreenController(), fenix: true);
     Get.lazyPut<GetCustomerController>(() => GetCustomerController(), fenix: true);
     Get.lazyPut<LoginLocalController>(() => LoginLocalController(), fenix: true);
