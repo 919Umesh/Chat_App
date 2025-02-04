@@ -14,7 +14,7 @@ class SplashScreenController extends GetxController {
   void navigateToNextScreen() async {
     await Future.delayed(const Duration(seconds: 3));
 
-    //To validate the user if login
+
     bool isLoggedIn = await SharedPreferencesHelper.getBool(key: 'isLogin');
 
     Fluttertoast.showToast(msg: isLoggedIn.toString());
