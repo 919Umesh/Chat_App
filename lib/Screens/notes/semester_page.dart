@@ -11,7 +11,7 @@ class SemesterScreen extends GetView<GetNotesController> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Sales',
+          'Semester Screen',
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.bold,
@@ -33,7 +33,7 @@ class SemesterScreen extends GetView<GetNotesController> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'Loading semesters...',
+                  'Loading semesters',
                   style: TextStyle(fontSize: 16, color: Colors.grey[600]),
                 ),
               ],
