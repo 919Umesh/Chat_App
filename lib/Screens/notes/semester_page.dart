@@ -65,7 +65,7 @@ class SemesterScreen extends GetView<GetNotesController> {
                   ),
                   trailing: const Icon(
                     Icons.directions,
-                    color: Colors.deepPurple,
+                    color: Colors.blue,
                   ),
                   onTap: () {
                     controller.fetchSubjects(controller.semesters[index]);
