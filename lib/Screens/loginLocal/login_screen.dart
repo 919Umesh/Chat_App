@@ -369,6 +369,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
 
   Future _loginWithFingerprint() async {
     try {
+      //To check whether the device is supported or not
       bool isAuthenticated = await controller.authenticateWithFingerprint();
       if (isAuthenticated) {
         bool checkLogin = await SharedPreferencesHelper.getBool(key: 'isLogin');
