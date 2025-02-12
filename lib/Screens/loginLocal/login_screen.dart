@@ -5,7 +5,6 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide FormData, Response;
 import 'package:icons_plus/icons_plus.dart';
-import 'package:local_auth/local_auth.dart';
 import '../../Helper/get_routes.dart';
 import '../../Helper/shared_preference_fun.dart';
 import 'login_getX.dart';
