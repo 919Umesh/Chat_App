@@ -8,7 +8,6 @@ class GetCustomerController extends GetxController {
   RxBool seeMoreDes = false.obs;
   final userList = <UserModel>[].obs;
 
-  //Init methods
   @override
   Future<void> onInit() async {
     super.onInit();
