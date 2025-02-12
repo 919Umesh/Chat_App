@@ -372,6 +372,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       bool isAuthenticated = await controller.authenticateWithFingerprint();
       if (isAuthenticated) {
         bool checkLogin = await SharedPreferencesHelper.getBool(key: 'isLogin');
+        //To check whether the use is logged in or not
         if (checkLogin == true) {
           controller.update();
           Get.offAllNamed(Routes.semesterPage);
