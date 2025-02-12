@@ -108,36 +108,39 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             const SizedBox(height: 20),
             _buildLoginButton(context),
             const SizedBox(height: 20),
-            InkWell(
-              onTap: () {
-                _loginWithFingerprint();
-              },
-              child: Center(
-                child: Container(
-                    height: 50,
-                    width: 150,
-                    decoration: BoxDecoration(
-                      color: AppColors.primary,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const Center(
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(Bootstrap.fingerprint),
-                          SizedBox(
-                            width: 10,
+            controller.checkLogin
+                ? InkWell(
+                    onTap: () {
+                      _loginWithFingerprint();
+                    },
+                    child: Center(
+                      child: Container(
+                        height: 50,
+                        width: 150,
+                        decoration: BoxDecoration(
+                          color: AppColors.primary,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Center(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Bootstrap.fingerprint),
+                              SizedBox(
+                                width: 10,
+                              ),
+                              Text(
+                                'Finger',
+                                style: TextStyle(
+                                    color: Colors.white, fontFamily: 'inter'),
+                              ),
+                            ],
                           ),
-                          Text(
-                            'Finger',
-                            style: TextStyle(
-                                color: Colors.white, fontFamily: 'inter'),
-                          ),
-                        ],
+                        ),
                       ),
-                    )),
-              ),
-            ),
+                    ),
+                  )
+                : const SizedBox.shrink(),
             const SizedBox(height: 20),
             _buildSocialLogin(),
           ],

@@ -3,12 +3,13 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 
-class LoginLocalController extends GetxController {
+import '../../Helper/shared_preference_fun.dart';
 
+class LoginLocalController extends GetxController {
   final formKeyLogin = GlobalKey<FormBuilderState>();
   var isFingerprintLogin = false.obs;
   late final LocalAuthentication myAuthentication;
-
+  late bool checkLogin = false;
 
   var authState = false.obs;
 
@@ -19,8 +20,12 @@ class LoginLocalController extends GetxController {
     myAuthentication.isDeviceSupported().then((bool isSupported) {
       authState.value = isSupported;
     });
+    _checkLoginState();
   }
 
+  Future<void> _checkLoginState() async {
+    checkLogin = await SharedPreferencesHelper.getBool(key: 'isLogin');
+  }
 
   Future<bool> authenticateWithFingerprint() async {
     try {
@@ -32,7 +37,7 @@ class LoginLocalController extends GetxController {
         ),
       );
       return isAuthenticated;
-    } catch(e) {
+    } catch (e) {
       debugPrint(e.toString());
       return false;
     }
