@@ -108,39 +108,41 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             const SizedBox(height: 20),
             _buildLoginButton(context),
             const SizedBox(height: 20),
-            controller.checkLogin
-                ? InkWell(
-                    onTap: () {
-                      _loginWithFingerprint();
-                    },
-                    child: Center(
-                      child: Container(
-                        height: 50,
-                        width: 150,
-                        decoration: BoxDecoration(
-                          color: AppColors.primary,
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        child: const Center(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Bootstrap.fingerprint),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                'Finger',
-                                style: TextStyle(
-                                    color: Colors.white, fontFamily: 'inter'),
-                              ),
-                            ],
+            Obx(() {
+             return controller.checkLogin.value
+                  ? InkWell(
+                      onTap: () {
+                        _loginWithFingerprint();
+                      },
+                      child: Center(
+                        child: Container(
+                          height: 50,
+                          width: 150,
+                          decoration: BoxDecoration(
+                            color: AppColors.primary,
+                            borderRadius: BorderRadius.circular(12),
+                          ),
+                          child: const Center(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Bootstrap.fingerprint),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Text(
+                                  'Finger',
+                                  style: TextStyle(
+                                      color: Colors.white, fontFamily: 'inter'),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  )
-                : const SizedBox.shrink(),
+                    )
+                  : const SizedBox.shrink();
+            }),
             const SizedBox(height: 20),
             _buildSocialLogin(),
           ],
@@ -341,7 +343,7 @@ class LoginLocalPage extends GetView<LoginLocalController> {
         ),
         child: Icon(
           icon,
-          size: 30, // Adjust the size of the icon
+          size: 30,
         ),
       ),
     );
@@ -376,8 +378,8 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       if (isAuthenticated) {
         bool checkLogin = await SharedPreferencesHelper.getBool(key: 'isLogin');
         if (checkLogin == true) {
-          controller.update();
           Get.offAllNamed(Routes.semesterPage);
+          controller.update();
           Fluttertoast.showToast(msg: "Authentication successful");
         } else {
           Fluttertoast.showToast(msg: "Login with email/password first!");

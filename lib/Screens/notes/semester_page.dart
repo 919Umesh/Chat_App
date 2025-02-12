@@ -28,6 +28,7 @@ class SemesterScreen extends GetView<GetNotesController> {
           IconButton(
               onPressed: () {
                 Get.offAllNamed(Routes.postLogin);
+                controller.update();
               },
               icon: const Icon(Bootstrap.person)),
         ],
