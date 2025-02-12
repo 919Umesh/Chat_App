@@ -24,6 +24,13 @@ class SemesterScreen extends GetView<GetNotesController> {
         centerTitle: true,
         backgroundColor: Colors.deepPurple,
         elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Get.offAllNamed(Routes.postLogin);
+              },
+              icon: const Icon(Bootstrap.person)),
+        ],
       ),
       body: Obx(() {
         if (controller.isLoadingSemesters.value) {
@@ -73,8 +80,8 @@ class SemesterScreen extends GetView<GetNotesController> {
                   onTap: () {
                     controller.fetchSubjects(controller.semesters[index]);
                     Get.to(() => SubjectScreen(
-                      semester: controller.semesters[index],
-                    ));
+                          semester: controller.semesters[index],
+                        ));
                   },
                 ),
               );
