@@ -1,9 +1,11 @@
 import 'package:chat_app/Helper/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart' hide FormData, Response;
 import 'package:icons_plus/icons_plus.dart';
+import 'package:local_auth/local_auth.dart';
 import '../../Helper/get_routes.dart';
 import '../../Helper/shared_preference_fun.dart';
 import 'login_getX.dart';
@@ -67,8 +69,11 @@ class LoginLocalPage extends GetView<LoginLocalController> {
 
   Widget _buildIllustration() {
     return const Center(
-      child: Icon(Bootstrap.person,size: 145,color: Colors.white,)
-    );
+        child: Icon(
+      Bootstrap.person,
+      size: 145,
+      color: Colors.white,
+    ));
   }
 
   Widget _buildLoginForm(BuildContext context) {
@@ -103,6 +108,37 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             _buildForgotPassword(),
             const SizedBox(height: 20),
             _buildLoginButton(context),
+            const SizedBox(height: 20),
+            InkWell(
+              onTap: () {
+                _loginWithFingerprint();
+              },
+              child: Center(
+                child: Container(
+                    height: 50,
+                    width: 150,
+                    decoration: BoxDecoration(
+                      color: AppColors.primary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(Bootstrap.fingerprint),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            'Finger',
+                            style: TextStyle(
+                                color: Colors.white, fontFamily: 'inter'),
+                          ),
+                        ],
+                      ),
+                    )),
+              ),
+            ),
             const SizedBox(height: 20),
             _buildSocialLogin(),
           ],
@@ -329,6 +365,26 @@ class LoginLocalPage extends GetView<LoginLocalController> {
       }
     } catch (e) {
       _showErrorMessage(e.toString());
+    }
+  }
+
+  Future _loginWithFingerprint() async {
+    try {
+      bool isAuthenticated = await controller.authenticateWithFingerprint();
+      if (isAuthenticated) {
+        bool checkLogin = await SharedPreferencesHelper.getBool(key: 'isLogin');
+        if (checkLogin == true) {
+          controller.update();
+          Get.offAllNamed(Routes.semesterPage);
+          Fluttertoast.showToast(msg: "Authentication successful");
+        } else {
+          Fluttertoast.showToast(msg: "Login with email/password first!");
+        }
+      } else {
+        Fluttertoast.showToast(msg: "Not device supported");
+      }
+    } on PlatformException catch (e) {
+      Fluttertoast.showToast(msg: e.toString());
     }
   }
 

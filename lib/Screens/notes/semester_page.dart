@@ -1,6 +1,9 @@
+import 'package:chat_app/Helper/get_routes.dart';
 import 'package:chat_app/Screens/notes/subject_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:icons_plus/icons_plus.dart';
+import '../../Helper/shared_preference_fun.dart';
 import 'notes_getx.dart';
 
 class SemesterScreen extends GetView<GetNotesController> {
@@ -79,6 +82,13 @@ class SemesterScreen extends GetView<GetNotesController> {
           );
         }
       }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () async {
+          await SharedPreferencesHelper.clearAllData();
+          Get.offAllNamed(Routes.postLogin);
+        },
+        child: const Icon(Bootstrap.door_open),
+      ),
     );
   }
 }
