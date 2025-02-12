@@ -4,11 +4,11 @@ import '../../Models/user_model.dart';
 import 'get_customer_repo.dart';
 
 class GetCustomerController extends GetxController {
-  //Reactive Objects
   final isLoading = false.obs;
   RxBool seeMoreDes = false.obs;
   final userList = <UserModel>[].obs;
 
+  //Init methods
   @override
   Future<void> onInit() async {
     super.onInit();
@@ -20,7 +20,6 @@ class GetCustomerController extends GetxController {
     try {
       final model = await getCustomerRepository.getCustomer();
       if ( model.status == 200) {
-        //Assigning the incoming objects
         userList.value = model.users;
       } else {
         debugPrint('Error Occurred');
