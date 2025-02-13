@@ -79,8 +79,7 @@ class GetCustomerPage extends GetView<GetCustomerController> {
                       color: Colors.grey,
                     ),
                     onTap: () async {
-                      // Fluttertoast.showToast(msg: "User Pressed");
-                      //Action to be done
+                       Fluttertoast.showToast(msg: "User Pressed");
                     },
                   ),
                 );
