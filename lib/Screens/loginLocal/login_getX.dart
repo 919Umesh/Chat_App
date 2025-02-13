@@ -3,14 +3,13 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:local_auth/local_auth.dart';
-
 import '../../Helper/shared_preference_fun.dart';
 
 class LoginLocalController extends GetxController {
   final formKeyLogin = GlobalKey<FormBuilderState>();
   var isFingerprintLogin = false.obs;
   late final LocalAuthentication myAuthentication;
-   RxBool checkLogin = false.obs;
+  late RxBool checkLogin = false.obs;
 
   var authState = false.obs;
 

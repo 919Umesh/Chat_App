@@ -109,10 +109,10 @@ class LoginLocalPage extends GetView<LoginLocalController> {
             _buildLoginButton(context),
             const SizedBox(height: 20),
             Obx(() {
-             return controller.checkLogin.value
+              return controller.checkLogin.value
                   ? InkWell(
-                      onTap: () {
-                        _loginWithFingerprint();
+                      onTap: () async {
+                        await _loginWithFingerprint();
                       },
                       child: Center(
                         child: Container(
