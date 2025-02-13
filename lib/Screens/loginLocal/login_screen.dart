@@ -380,15 +380,16 @@ class LoginLocalPage extends GetView<LoginLocalController> {
         if (checkLogin == true) {
           Get.offAllNamed(Routes.semesterPage);
           controller.update();
-          Fluttertoast.showToast(msg: "Authentication successful");
+          _showSuccessMessage( "Authentication successful");
         } else {
-          Fluttertoast.showToast(msg: "Login with email/password first!");
+          _showErrorMessage("Login with email/password first!");
         }
       } else {
-        Fluttertoast.showToast(msg: "Not device supported");
+        _showErrorMessage("Not device supported");
       }
     } on PlatformException catch (e) {
-      Fluttertoast.showToast(msg: e.toString());
+      _showErrorMessage(e.toString());
+
     }
   }
 
