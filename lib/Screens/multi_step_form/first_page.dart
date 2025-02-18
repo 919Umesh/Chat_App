@@ -27,12 +27,6 @@ class FirstPage extends GetView<FromController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // Center(
-                  //   child: GestureDetector(
-                  //     onTap: () => _showDialog(context, true),
-                  //     child:  picture(),
-                  //   ),
-                  // ),
                   CustomImagePicker(
                     currentImage: controller.fileimageFile,
                     defaultImageAsset: 'assets/images/avatar.jpeg',

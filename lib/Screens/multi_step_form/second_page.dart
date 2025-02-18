@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'custom_image_picker.dart';
 import 'form_getx.dart';
 
 class SecondPage extends GetView<FromController> {
@@ -23,6 +24,19 @@ class SecondPage extends GetView<FromController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  CustomImagePicker(
+                    currentImage: controller.fileimageFile,
+                    defaultImageAsset: 'assets/images/avatar.jpeg',
+                    onImageSelected: (file, multipartFile) {
+                      controller.fileimageFile = file;
+                      controller.multiPartPhoto = multipartFile;
+                      controller.update();
+                    },
+                    // Optional customization
+                    radius: 50.0,
+                    bottomSheetIndicatorColor: Colors.green,
+                    tileTextColor: Colors.black,
+                  ),
                   Text(
                     'Phone Number **',
                     style: Theme.of(context).textTheme.titleSmall,
