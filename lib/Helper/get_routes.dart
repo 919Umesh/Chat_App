@@ -23,6 +23,6 @@ class Routes {
     GetPage(name: createAccountPage, page: () =>  const CreateAccountPage()),
     GetPage(name: semesterPage, page: () =>   const SemesterScreen()),
     GetPage(name: splashPagePath, page: () =>   const SplashScreenPage()),
-    GetPage(name: formPagePath, page: () =>   const FormPage()),
+    GetPage(name: formPagePath, page: () =>   const HorizontalStepperForm()),
   ];
 }
