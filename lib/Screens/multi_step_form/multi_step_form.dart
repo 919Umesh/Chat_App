@@ -87,32 +87,6 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                   onPressed: currentIndex == 0 ? null : moveToPreviousPage,
                   child: const Text('Prev'),
                 ),
-                // ElevatedButton(
-                //   onPressed: () {
-                //     switch (currentIndex) {
-                //       case 0:
-                //         controller.saveForm();
-                //         break;
-                //       case 1:
-                //         saveData('phone', SecondPage.controller.text);
-                //         Fluttertoast.showToast(msg: SecondPage.controller.text);
-                //         break;
-                //       case 2:
-                //         saveData('email', ThirdPage.controller.text);
-                //         Fluttertoast.showToast(msg: ThirdPage.controller.text);
-                //         break;
-                //       case 3:
-                //         saveData('address', FourthPage.controller.text);
-                //         Fluttertoast.showToast(msg: FourthPage.controller.text);
-                //         break;
-                //       default:
-                //         Fluttertoast.showToast(msg: 'Invalid Index');
-                //         return;
-                //     }
-                //     moveToNextPage();
-                //   },
-                //   child: const Text('Save & Next'),
-                // ),
                 GestureDetector(
                   onTap: () {
                     switch (currentIndex) {
@@ -120,8 +94,7 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                         controller.saveForm();
                         break;
                       case 1:
-                        saveData('phone', SecondPage.controller.text);
-                        Fluttertoast.showToast(msg: SecondPage.controller.text);
+                        controller.saveEducation();
                         break;
                       case 2:
                         saveData('email', ThirdPage.controller.text);
@@ -139,7 +112,7 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                   },
                   child: Container(
                     height: 50,
-                    width: 70,
+                    width: 110,
                     decoration: BoxDecoration(
                       color: Colors.green,
                       borderRadius: BorderRadius.circular(12),
