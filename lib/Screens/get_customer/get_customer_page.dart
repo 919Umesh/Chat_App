@@ -8,6 +8,9 @@ class GetCustomerPage extends GetView<GetCustomerController> {
 
   @override
   Widget build(BuildContext context) {
+    final args = Get.arguments as Map<String, dynamic>?;
+    final bool isEditing = args?["is_editing"] ?? false;
+    Fluttertoast.showToast(msg: isEditing.toString());
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(

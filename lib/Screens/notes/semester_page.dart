@@ -31,6 +31,14 @@ class SemesterScreen extends GetView<GetNotesController> {
                 controller.update();
               },
               icon: const Icon(Bootstrap.person)),
+          IconButton(
+              onPressed: () {
+                Get.offAllNamed(Routes.getCustomerPage,arguments: <String,dynamic>{
+                  'is_editing':true
+                });
+                controller.update();
+              },
+              icon: const Icon(Bootstrap.person)),
         ],
       ),
       body: Obx(() {
