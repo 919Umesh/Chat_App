@@ -18,7 +18,7 @@ class SecondPage extends GetView<FromController> {
           children: [
             const SizedBox(height: 10),
             FormBuilder(
-              key: controller.formCreate,
+              key: controller.formKeyEducation,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
@@ -66,8 +66,7 @@ class SecondPage extends GetView<FromController> {
                       return null;
                     },
                     decoration: InputDecoration(
-                      contentPadding: const EdgeInsets.symmetric(
-                          vertical: 8.0, horizontal: 8),
+                      contentPadding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 8),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6.0),
                       ),
@@ -80,7 +79,7 @@ class SecondPage extends GetView<FromController> {
             const SizedBox(height: 80),
             ElevatedButton(
               onPressed: () async {
-                await controller.saveEducation(); // Call saveEducation from the controller
+                await controller.saveEducation();
               },
               child: const Text('Save Education Details'),
             ),

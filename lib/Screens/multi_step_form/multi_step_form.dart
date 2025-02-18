@@ -83,10 +83,17 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                ElevatedButton(
-                  onPressed: currentIndex == 0 ? null : moveToPreviousPage,
-                  child: const Text('Prev'),
-                ),
+                GestureDetector(
+                    onTap: currentIndex == 0 ? null : moveToPreviousPage,
+                    child: Container(
+                      height: 50,
+                      width: 110,
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const Center(child: Text('Previous')),
+                    )),
                 GestureDetector(
                   onTap: () {
                     switch (currentIndex) {

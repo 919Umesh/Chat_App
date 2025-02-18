@@ -9,6 +9,7 @@ import 'form_repo.dart';
 
 class FromController extends GetxController {
   final formCreate = GlobalKey<FormBuilderState>();
+  final formKeyEducation = GlobalKey<FormBuilderState>();
   File? fileimageFile;
   d.MultipartFile? multiPartPhoto;
 
@@ -35,14 +36,13 @@ class FromController extends GetxController {
     }
   }
 
-  // Save education details
   Future<void> saveEducation() async {
     Fluttertoast.showToast(msg: 'Education');
-    if (formCreate.currentState?.saveAndValidate() ?? false) {
+    if (formKeyEducation.currentState?.saveAndValidate() ?? false) {
       try {
         final response = await createFromRepository.createForm(
           form: d.FormData.fromMap(
-            formCreate.currentState!.value,
+            formKeyEducation.currentState!.value,
           ),
         );
 
