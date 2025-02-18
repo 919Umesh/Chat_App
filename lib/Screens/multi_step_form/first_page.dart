@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'custom_image_picker.dart';
 import 'form_getx.dart';
 
 class FirstPage extends GetView<FromController> {
@@ -26,11 +27,24 @@ class FirstPage extends GetView<FromController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Center(
-                    child: GestureDetector(
-                      onTap: () => _showDialog(context, true),
-                      child:  picture(),
-                    ),
+                  // Center(
+                  //   child: GestureDetector(
+                  //     onTap: () => _showDialog(context, true),
+                  //     child:  picture(),
+                  //   ),
+                  // ),
+                  CustomImagePicker(
+                    currentImage: controller.fileimageFile,
+                    defaultImageAsset: 'assets/images/avatar.jpeg',
+                    onImageSelected: (file, multipartFile) {
+                      controller.fileimageFile = file;
+                      controller.multiPartPhoto = multipartFile;
+                      controller.update();
+                    },
+                    // Optional customization
+                    radius: 50.0,
+                    bottomSheetIndicatorColor: Colors.green,
+                    tileTextColor: Colors.black,
                   ),
                   const SizedBox(height: 20),
                   Text(
