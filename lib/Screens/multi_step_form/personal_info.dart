@@ -39,7 +39,7 @@ class _InfoState extends State<Info> {
 
   Future<void> _saveData() async {
     if (_formKey.currentState!.validate()) {
-      await context.read<FormDataProvider>().savePageData(
+      await context.read<FormDataProvider>().savePage1Data(
         'personal_info',
         {
           'name': _nameController.text,

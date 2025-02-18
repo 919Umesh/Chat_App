@@ -6,7 +6,22 @@ import 'package:shared_preferences/shared_preferences.dart';
 class FormDataProvider extends ChangeNotifier {
   Map<String, dynamic> _formData = {};
 
-  Future<void> savePageData(String page, Map<String, dynamic> data) async {
+  Future<void> savePage1Data(String page, Map<String, dynamic> data) async {
+    Fluttertoast.showToast(msg: "Post");
+    _formData.addAll(data);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('form_data', json.encode(_formData));
+    notifyListeners();
+  }
+
+  Future<void> savePage2Data(String page, Map<String, dynamic> data) async {
+    Fluttertoast.showToast(msg: "Post");
+    _formData.addAll(data);
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('form_data', json.encode(_formData));
+    notifyListeners();
+  }
+  Future<void> savePage3Data(String page, Map<String, dynamic> data) async {
     Fluttertoast.showToast(msg: "Post");
     _formData.addAll(data);
     final prefs = await SharedPreferences.getInstance();

@@ -38,7 +38,7 @@ class _RecentState extends State<Recent> {
 
   Future<void> _saveData() async {
     if (_formKey.currentState!.validate()) {
-      await context.read<FormDataProvider>().savePageData(
+      await context.read<FormDataProvider>().savePage3Data(
         'experience',
         {
           'company': _companyController.text,
