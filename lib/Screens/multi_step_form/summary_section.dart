@@ -1,49 +1,28 @@
 import 'package:flutter/material.dart';
 
-class SummaryScreen extends StatelessWidget {
-  final Map<String, dynamic> data;
-
-  const SummaryScreen({super.key, required this.data});
+class FinalScreen extends StatelessWidget {
+  const FinalScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+
+    var data = ModalRoute.of(context)?.settings.arguments as Map<String,String>;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Summary'),
+        title: const Text('Final Screen'),
+        centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
+      body: SizedBox(
+        width: double.infinity,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              'Form Summary',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 20),
-            Expanded(
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  String key = data.keys.elementAt(index);
-                  return Card(
-                    margin: const EdgeInsets.only(bottom: 8),
-                    child: ListTile(
-                      title: Text(
-                        key.toUpperCase(),
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text(data[key].toString()),
-                    ),
-                  );
-                },
-              ),
-            ),
+            Text('first page data: ${data['first']}'),
+            Text('second page data: ${data['second']}'),
+            Text('third page data: ${data['third']}'),
+            Text('fourth page data: ${data['fourth']}'),
           ],
         ),
       ),

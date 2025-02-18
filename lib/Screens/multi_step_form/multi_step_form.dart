@@ -1,7 +1,8 @@
-import 'package:chat_app/Screens/multi_step_form/personal_info.dart';
+import 'package:chat_app/Screens/multi_step_form/temp.dart';
 import 'package:flutter/material.dart';
 import 'duration.dart';
 import 'education.dart';
+import 'personal_info.dart';
 
 class HorizontalStepperForm extends StatefulWidget {
   const HorizontalStepperForm({super.key});
@@ -11,111 +12,42 @@ class HorizontalStepperForm extends StatefulWidget {
 }
 
 class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
-  final PageController _pageController = PageController();
-  int _currentPage = 0;
+  var pages =  [ const FirstPage(),const SecondPage(), const ThirdPage(),const FourthPage(),];
 
-  List<Widget> get _formPages => [
-        const Info(),
-        const Education(),
-        const Recent(),
-      ];
-
-  void _nextPage() async {
-    if (_currentPage < _formPages.length - 1) {
-      _pageController.nextPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
-
-  void _previousPage() {
-    if (_currentPage > 0) {
-      _pageController.previousPage(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeInOut,
-      );
-    }
-  }
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Form Steps'),
-      ),
-      body: Column(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              children: List.generate(
-                _formPages.length,
-                (index) => Expanded(
-                  child: Container(
-                    height: 4,
-                    margin: const EdgeInsets.symmetric(horizontal: 4),
-                    color:
-                        index <= _currentPage ? Colors.blue : Colors.grey[300],
-                  ),
+    print('called');
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 30),
+              child: LinearProgressIndicator(
+                color: Colors.blue.shade700,
+                value: (currentIndex+1) /4,
+                borderRadius: BorderRadius.circular(10),
+                minHeight: 20,
+              ),
+            ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.all(15),
+                child: PageView(
+                  children: pages,
+                  onPageChanged: (i){
+                    setState(() {
+                      currentIndex = i;
+                    });
+                  },
+                  padEnds: true,
                 ),
               ),
             ),
-          ),
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              physics: const NeverScrollableScrollPhysics(),
-              onPageChanged: (index) {
-                setState(() {
-                  _currentPage = index;
-                });
-              },
-              children: _formPages,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                if (_currentPage > 0)
-
-                  GestureDetector(
-                      onTap: _previousPage,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.green,
-                            borderRadius: BorderRadius.circular(20)
-                        ),
-                        height: 80,
-                        width: 150,
-
-                        child: const Center(child: Text('Previous')),
-                      ))
-                else
-                  const SizedBox.shrink(),
-                GestureDetector(
-                  onTap: _nextPage,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: Colors.red,
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    height: 80,
-                    width: 150,
-
-                    child: Center(
-                      child: Text(_currentPage == _formPages.length - 1
-                          ? 'Submit'
-                          : 'Next'),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
