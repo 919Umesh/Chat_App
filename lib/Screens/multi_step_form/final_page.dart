@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class FinalScreen extends StatelessWidget {
@@ -5,8 +6,7 @@ class FinalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    var data = ModalRoute.of(context)?.settings.arguments as Map<String,String>;
+    var data = ModalRoute.of(context)?.settings.arguments as Map<String, String>;
 
     return Scaffold(
       appBar: AppBar(
@@ -19,10 +19,10 @@ class FinalScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text('first page data: ${data['first']}'),
-            Text('second page data: ${data['second']}'),
-            Text('third page data: ${data['third']}'),
-            Text('fourth page data: ${data['fourth']}'),
+            Text('First Page Data: ${data['first']}'),
+            Text('Second Page Data: ${data['second']}'),
+            Text('Third Page Data: ${data['third']}'),
+            Text('Fourth Page Data: ${data['fourth']}'),
           ],
         ),
       ),

@@ -1,9 +1,10 @@
+
 import 'package:flutter/material.dart';
 
-class SecondPage extends StatelessWidget {
+class FirstPage extends StatelessWidget {
   static var controller = TextEditingController();
-  const SecondPage({super.key});
 
+  const FirstPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +12,15 @@ class SecondPage extends StatelessWidget {
       children: [
         const Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text('Second Page'),
+          child: Text('First Page'),
         ),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(
-              label: Text('phone'),
+              label: const Text('Name'),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(width: 1,color: Colors.blue)
-              )
-          ),
+                  borderSide: const BorderSide(width: 1, color: Colors.blue))),
         ),
       ],
     );

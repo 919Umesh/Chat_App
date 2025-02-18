@@ -1,28 +1,25 @@
-
 import 'package:flutter/material.dart';
 
-class ThirdPage extends StatelessWidget {
+class SecondPage extends StatelessWidget {
   static var controller = TextEditingController();
-  const ThirdPage({super.key});
 
+  const SecondPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text('ThirdPage '),
+        const Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Text('Second Page'),
         ),
         TextFormField(
           controller: controller,
           decoration: InputDecoration(
-              label: Text('phone'),
+              label: const Text('Phone'),
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
-                  borderSide: BorderSide(width: 1,color: Colors.blue)
-              )
-          ),
+                  borderSide: const BorderSide(width: 1, color: Colors.blue))),
         ),
       ],
     );
