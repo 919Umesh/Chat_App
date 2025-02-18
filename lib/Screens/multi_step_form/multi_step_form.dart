@@ -15,10 +15,10 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
   int _currentPage = 0;
 
   List<Widget> get _formPages => [
-    const Info(),
-    const Education(),
-    const Recent(),
-  ];
+        const Info(),
+        const Education(),
+        const Recent(),
+      ];
 
   void _nextPage() async {
     if (_currentPage < _formPages.length - 1) {
@@ -51,11 +51,12 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
             child: Row(
               children: List.generate(
                 _formPages.length,
-                    (index) => Expanded(
+                (index) => Expanded(
                   child: Container(
                     height: 4,
                     margin: const EdgeInsets.symmetric(horizontal: 4),
-                    color: index <= _currentPage ? Colors.blue : Colors.grey[300],
+                    color:
+                        index <= _currentPage ? Colors.blue : Colors.grey[300],
                   ),
                 ),
               ),
@@ -79,15 +80,37 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 if (_currentPage > 0)
-                  ElevatedButton(
-                    onPressed: _previousPage,
-                    child: const Text('Previous'),
-                  )
+
+                  GestureDetector(
+                      onTap: _previousPage,
+                      child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.green,
+                            borderRadius: BorderRadius.circular(20)
+                        ),
+                        height: 80,
+                        width: 150,
+
+                        child: const Center(child: Text('Previous')),
+                      ))
                 else
                   const SizedBox.shrink(),
-                ElevatedButton(
-                  onPressed: _nextPage,
-                  child: Text(_currentPage == _formPages.length - 1 ? 'Submit' : 'Next'),
+                GestureDetector(
+                  onTap: _nextPage,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red,
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    height: 80,
+                    width: 150,
+
+                    child: Center(
+                      child: Text(_currentPage == _formPages.length - 1
+                          ? 'Submit'
+                          : 'Next'),
+                    ),
+                  ),
                 ),
               ],
             ),

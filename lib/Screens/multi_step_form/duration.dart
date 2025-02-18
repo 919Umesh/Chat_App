@@ -112,10 +112,21 @@ class _RecentState extends State<Recent> {
               onEditingComplete: _saveData,
             ),
             const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: _submitForm,
-              child: const Text('Submit'),
+            GestureDetector(
+              onTap: _submitForm,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.red,
+                    borderRadius: BorderRadius.circular(20)
+                ),
+                height: 80,
+                width: 150,
+                child: const Center(
+                  child:Text('Submit'),
+                ),
+              ),
             ),
+
           ],
         ),
       ),
