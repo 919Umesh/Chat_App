@@ -1,20 +1,20 @@
 
-// education.dart
+// recent.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'form_data_provider.dart';
 
-class Education extends StatefulWidget {
-  const Education({super.key});
+class Recent extends StatefulWidget {
+  const Recent({super.key});
 
   @override
-  State<Education> createState() => _EducationState();
+  State<Recent> createState() => _RecentState();
 }
 
-class _EducationState extends State<Education> {
+class _RecentState extends State<Recent> {
   final _formKey = GlobalKey<FormState>();
-  final _degreeController = TextEditingController();
-  final _universityController = TextEditingController();
+  final _companyController = TextEditingController();
+  final _experienceController = TextEditingController();
 
   @override
   void initState() {
@@ -25,27 +25,42 @@ class _EducationState extends State<Education> {
   Future<void> _loadSavedData() async {
     final formData = await context.read<FormDataProvider>().getFormData();
     setState(() {
-      _degreeController.text = formData['degree'] ?? '';
-      _universityController.text = formData['university'] ?? '';
+      _companyController.text = formData['company'] ?? '';
+      _experienceController.text = formData['experience'] ?? '';
     });
   }
 
   @override
   void dispose() {
-    _degreeController.dispose();
-    _universityController.dispose();
+    _companyController.dispose();
+    _experienceController.dispose();
     super.dispose();
   }
 
   Future<void> _saveData() async {
     if (_formKey.currentState!.validate()) {
       await context.read<FormDataProvider>().savePageData(
-        'education',
+        'experience',
         {
-          'degree': _degreeController.text,
-          'university': _universityController.text,
+          'company': _companyController.text,
+          'experience': _experienceController.text,
         },
       );
+    }
+  }
+
+  Future<void> _submitForm() async {
+    if (_formKey.currentState!.validate()) {
+      await _saveData();
+      final formData = await context.read<FormDataProvider>().getFormData();
+      if (mounted) {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SummaryScreen(data: formData),
+          ),
+        );
+      }
     }
   }
 
@@ -63,19 +78,19 @@ class _EducationState extends State<Education> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             const Text(
-              'Education Details',
+              'Recent Experience',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 20),
             TextFormField(
-              controller: _degreeController,
+              controller: _companyController,
               decoration: const InputDecoration(
-                labelText: 'Degree',
+                labelText: 'Company Name',
                 border: OutlineInputBorder(),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your degree';
+                  return 'Please enter company name';
                 }
                 return null;
               },
@@ -83,18 +98,24 @@ class _EducationState extends State<Education> {
             ),
             const SizedBox(height: 16),
             TextFormField(
-              controller: _universityController,
+              controller: _experienceController,
               decoration: const InputDecoration(
-                labelText: 'University',
+                labelText: 'Work Experience',
                 border: OutlineInputBorder(),
               ),
+              maxLines: 3,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Please enter your university';
+                  return 'Please enter your work experience';
                 }
                 return null;
               },
               onEditingComplete: _saveData,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: _submitForm,
+              child: const Text('Submit'),
             ),
           ],
         ),
