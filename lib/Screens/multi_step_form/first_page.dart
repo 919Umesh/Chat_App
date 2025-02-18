@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
-import '../../Helper/get_routes.dart';
-import '../reusable/loading_button.dart';
 import 'form_getx.dart';
-import 'form_repo.dart';
 
 class FirstPage extends GetView<FromController> {
   const FirstPage({super.key});
@@ -89,15 +86,6 @@ class FirstPage extends GetView<FromController> {
               ),
             ),
             const SizedBox(height: 80),
-            LoadingButton(
-              onPressed: () async {
-                await _saveForm();
-              },
-              child: Text(
-                'Save Profile',
-                style: context.textTheme.titleSmall?.copyWith(color: Colors.white),
-              ),
-            ),
           ],
         ),
       ),
@@ -176,7 +164,6 @@ class FirstPage extends GetView<FromController> {
     );
   }
 
-  // Open camera to capture image
   Future<void> _openCamera(BuildContext context) async {
     final ImagePicker picker = ImagePicker();
     try {
@@ -210,26 +197,5 @@ class FirstPage extends GetView<FromController> {
     }
   }
 
-  // Save form data
-  Future<void> _saveForm() async {
-    if (controller.multiPartPhoto != null) {
-      controller.formCreate.currentState?.fields['profile_pic_url']
-          ?.didChange(controller.multiPartPhoto);
-    }
-    if (controller.formCreate.currentState?.saveAndValidate() ?? false) {
-      try {
-        final response = await createFromRepository.createForm(
-          form: d.FormData.fromMap(
-            controller.formCreate.currentState!.value,
-          ),
-        );
 
-        if (response.statusCode == 201 || response.statusCode == 200) {
-          Get.offAndToNamed(Routes.semesterPage);
-        }
-      } catch (e) {
-        debugPrint('Error saving form: $e');
-      }
-    }
-  }
 }

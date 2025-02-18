@@ -1,64 +1,9 @@
-// import 'package:chat_app/Screens/multi_step_form/second_page.dart';
-// import 'package:chat_app/Screens/multi_step_form/third_page.dart';
-// import 'package:flutter/material.dart';
-// import 'first_page.dart';
-// import 'fourth_page.dart';
-//
-// class HorizontalStepperForm extends StatefulWidget {
-//   const HorizontalStepperForm({super.key});
-//
-//   @override
-//   State<HorizontalStepperForm> createState() => _HorizontalStepperFormState();
-// }
-//
-// class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
-//   var pages = [
-//     const FirstPage(),
-//     const SecondPage(),
-//     const ThirdPage(),
-//     const FourthPage(),
-//   ];
-//
-//   int currentIndex = 0;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return SafeArea(
-//       child: Scaffold(
-//         body: Column(
-//           children: [
-//             Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-//               child: LinearProgressIndicator(
-//                 color: Colors.blue.shade700,
-//                 value: (currentIndex + 1) / 4,
-//                 borderRadius: BorderRadius.circular(10),
-//                 minHeight: 20,
-//               ),
-//             ),
-//             Expanded(
-//               child: Padding(
-//                 padding: const EdgeInsets.all(15),
-//                 child: PageView(
-//                   onPageChanged: (i) {
-//                     setState(() {
-//                       currentIndex = i;
-//                     });
-//                   },
-//                   padEnds: true,
-//                   children: pages,
-//                 ),
-//               ),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'first_page.dart';
+import 'form_getx.dart';
 import 'second_page.dart';
 import 'third_page.dart';
 import 'fourth_page.dart';
@@ -81,6 +26,8 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
   int currentIndex = 0;
 
   Map<String, String> formData = {};
+
+  final FromController controller = Get.put(FromController());
 
   void saveData(String key, String value) {
     setState(() {
@@ -123,7 +70,8 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: PageView.builder(
-                  physics: const NeverScrollableScrollPhysics(), // Disable swipe
+                  physics: const NeverScrollableScrollPhysics(),
+                  // Disable swipe
                   itemCount: pages.length,
                   controller: PageController(initialPage: currentIndex),
                   itemBuilder: (context, index) {
@@ -139,11 +87,37 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                   onPressed: currentIndex == 0 ? null : moveToPreviousPage,
                   child: const Text('Prev'),
                 ),
-                ElevatedButton(
-                  onPressed: () {
+                // ElevatedButton(
+                //   onPressed: () {
+                //     switch (currentIndex) {
+                //       case 0:
+                //         controller.saveForm();
+                //         break;
+                //       case 1:
+                //         saveData('phone', SecondPage.controller.text);
+                //         Fluttertoast.showToast(msg: SecondPage.controller.text);
+                //         break;
+                //       case 2:
+                //         saveData('email', ThirdPage.controller.text);
+                //         Fluttertoast.showToast(msg: ThirdPage.controller.text);
+                //         break;
+                //       case 3:
+                //         saveData('address', FourthPage.controller.text);
+                //         Fluttertoast.showToast(msg: FourthPage.controller.text);
+                //         break;
+                //       default:
+                //         Fluttertoast.showToast(msg: 'Invalid Index');
+                //         return;
+                //     }
+                //     moveToNextPage();
+                //   },
+                //   child: const Text('Save & Next'),
+                // ),
+                GestureDetector(
+                  onTap: () {
                     switch (currentIndex) {
                       case 0:
-                        saveData('name', FirstPage.controller.text);
+                        controller.saveForm();
                         break;
                       case 1:
                         saveData('phone', SecondPage.controller.text);
@@ -163,7 +137,15 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                     }
                     moveToNextPage();
                   },
-                  child: const Text('Save & Next'),
+                  child: Container(
+                    height: 50,
+                    width: 70,
+                    decoration: BoxDecoration(
+                      color: Colors.green,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: const Center(child: Text('Save & Next')),
+                  ),
                 ),
               ],
             ),
