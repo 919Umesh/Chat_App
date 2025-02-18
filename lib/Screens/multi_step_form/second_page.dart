@@ -1,7 +1,8 @@
+
+import 'package:chat_app/Screens/multi_step_form/custom_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
-import 'custom_image_picker.dart';
 import 'form_getx.dart';
 
 class SecondPage extends GetView<FromController> {
