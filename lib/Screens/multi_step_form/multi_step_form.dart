@@ -1,12 +1,7 @@
-
-
 import 'package:chat_app/Screens/multi_step_form/personal_info.dart';
 import 'package:flutter/material.dart';
-
-
 import 'duration.dart';
 import 'education.dart';
-
 
 class HorizontalStepperForm extends StatefulWidget {
   const HorizontalStepperForm({super.key});

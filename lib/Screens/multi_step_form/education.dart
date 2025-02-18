@@ -2,7 +2,8 @@
 // education.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'form_data_provider.dart';
+import 'data_provider.dart';
+
 
 class Education extends StatefulWidget {
   const Education({super.key});
