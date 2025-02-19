@@ -195,18 +195,16 @@ class FirstPage extends GetView<FromController> {
                     keyboardType: TextInputType.number,
                   ),
                   const SizedBox(height: 20),
-
-                  // Hidden User ID Field
                   FormBuilderField(
                     name: 'userID',
-                    initialValue: '35', // Set initial value
+                    initialValue: '35',
                     builder: (FormFieldState<dynamic> field) {
                       return const SizedBox.shrink();
                     },
                   ),
                   FormBuilderField(
                     name: 'code',
-                    initialValue: '35', // Set initial value
+                    initialValue: '35',
                     builder: (FormFieldState<dynamic> field) {
                       return const SizedBox.shrink();
                     },
