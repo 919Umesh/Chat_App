@@ -14,12 +14,24 @@ class FromController extends GetxController {
   d.MultipartFile? multiPartPhoto;
 
   Future<void> saveForm() async {
-    Fluttertoast.showToast(msg: 'Save');
     if (multiPartPhoto != null) {
       formCreate.currentState?.fields['profile_pic_url']
           ?.didChange(multiPartPhoto);
     }
+    
     if (formCreate.currentState?.saveAndValidate() ?? false) {
+      debugPrint('---------Fields------');
+      formCreate.currentState!.fields.forEach((key,field){
+        debugPrint('$key:${field.value}');
+      });
+      debugPrint('----------File--------');
+      if (fileimageFile != null) {
+        debugPrint('Selected File Path: ${fileimageFile!.path}');
+      }
+      if (multiPartPhoto != null) {
+        debugPrint('Multipart File Name: ${multiPartPhoto!.filename}');
+      }
+      debugPrint('----------end--------');
       try {
         final response = await createFromRepository.createForm(
           form: d.FormData.fromMap(
@@ -39,6 +51,12 @@ class FromController extends GetxController {
   Future<void> saveEducation() async {
     Fluttertoast.showToast(msg: 'Education');
     if (formKeyEducation.currentState?.saveAndValidate() ?? false) {
+      debugPrint('--------- Education Form Fields ------');
+      formKeyEducation.currentState!.fields.forEach((key, field) {
+        debugPrint('$key: ${field.value}');
+      });
+      debugPrint('Full Education Form Data: ${formKeyEducation.currentState!.value}');
+      debugPrint('---------- End --------');
       try {
         final response = await createFromRepository.createForm(
           form: d.FormData.fromMap(

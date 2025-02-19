@@ -39,8 +39,3 @@ class GetNotesRepository extends BaseRepository {
 }
 
 GetNotesRepository getNotesRepository = GetNotesRepository();
-
-//All the API Endpoints
-// https://node-chat-mvlu.onrender.com/notes/semesters
-// https://node-chat-mvlu.onrender.com/notes/subjects?semester=Semster1
-// https://node-chat-mvlu.onrender.com/notes/notes?semester=Semster1&subject=DSA

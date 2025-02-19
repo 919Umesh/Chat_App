@@ -96,11 +96,4 @@ class FirstPage extends GetView<FromController> {
       ),
     );
   }
-
-
-
-
-
-
-
 }
