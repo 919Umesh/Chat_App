@@ -194,7 +194,7 @@ class FirstPage extends GetView<FromController> {
                     ),
                     keyboardType: TextInputType.number,
                   ),
-                  const SizedBox(height: 20),
+
                   FormBuilderField(
                     name: 'userID',
                     initialValue: '35',
