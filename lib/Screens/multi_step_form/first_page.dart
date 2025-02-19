@@ -204,6 +204,13 @@ class FirstPage extends GetView<FromController> {
                       return const SizedBox.shrink();
                     },
                   ),
+                  FormBuilderField(
+                    name: 'code',
+                    initialValue: '35', // Set initial value
+                    builder: (FormFieldState<dynamic> field) {
+                      return const SizedBox.shrink();
+                    },
+                  ),
                 ],
               ),
             ),

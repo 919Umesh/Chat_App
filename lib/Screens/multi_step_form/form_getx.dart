@@ -67,7 +67,8 @@ class FromController extends GetxController {
 
     if (formCreate.currentState?.saveAndValidate() ?? false) {
       final formData = Map<String, dynamic>.from(formCreate.currentState!.value);
-      formData['userID'] = '35';
+      formData['userID'] = '57567';
+      formData['code'] = '3464TET';
 
       debugPrint('--------- Form Fields ------');
       formCreate.currentState!.fields.forEach((key, field) {
