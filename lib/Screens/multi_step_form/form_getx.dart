@@ -10,8 +10,16 @@ import 'form_repo.dart';
 class FromController extends GetxController {
   final formCreate = GlobalKey<FormBuilderState>();
   final formKeyEducation = GlobalKey<FormBuilderState>();
+
   File? fileimageFile;
+  File? educationImageFile;
+  File? emailImageFile;
+  File? addressImageFile;
+
   d.MultipartFile? multiPartPhoto;
+  d.MultipartFile? educationMultiPartPhoto;
+  d.MultipartFile? emailMultiPartPhoto;
+  d.MultipartFile? addressMultiPartPhoto;
 
   // Future<void> saveForm() async {
   //   if (multiPartPhoto != null) {
