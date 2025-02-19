@@ -13,30 +13,80 @@ class FromController extends GetxController {
   File? fileimageFile;
   d.MultipartFile? multiPartPhoto;
 
+  // Future<void> saveForm() async {
+  //   if (multiPartPhoto != null) {
+  //     formCreate.currentState?.fields['profile_pic_url']
+  //         ?.didChange(multiPartPhoto);
+  //   }
+  //   if (formCreate.currentState?.saveAndValidate() ?? false) {
+  //     // final fields = formCreate.currentState!.fields;
+  //     // final fieldValues = fields.map((key, value) => MapEntry(key, value.value));
+  //     // if (fields['userID']?.value != null) {
+  //     //   fieldValues['userID'] = '35';
+  //     // }
+  //     //
+  //
+  //     final formData = formCreate.currentState!.value;
+  //     formData['userID'] = '35';
+  //
+  //     debugPrint('---------Fields------');
+  //     formCreate.currentState!.fields.forEach((key,field){
+  //       debugPrint('$key:${field.value}');
+  //     });
+  //     debugPrint('----------File--------');
+  //     if (fileimageFile != null) {
+  //       debugPrint('Selected File Path: ${fileimageFile!.path}');
+  //     }
+  //     if (multiPartPhoto != null) {
+  //       debugPrint('Multipart File Name: ${multiPartPhoto!.filename}');
+  //     }
+  //     debugPrint('----------end--------');
+  //
+  //
+  //     try {
+  //       final response = await createFromRepository.createForm(
+  //         form: d.FormData.fromMap(
+  //          formCreate.currentState!.value,
+  //         ),
+  //       );
+  //
+  //       if (response.statusCode == 201 || response.statusCode == 200) {
+  //         Get.offAndToNamed(Routes.semesterPage);
+  //       }
+  //     } catch (e) {
+  //       debugPrint('Error saving form: $e');
+  //     }
+  //   }
+  // }
+
   Future<void> saveForm() async {
     if (multiPartPhoto != null) {
       formCreate.currentState?.fields['profile_pic_url']
           ?.didChange(multiPartPhoto);
     }
-    
+
     if (formCreate.currentState?.saveAndValidate() ?? false) {
-      debugPrint('---------Fields------');
-      formCreate.currentState!.fields.forEach((key,field){
-        debugPrint('$key:${field.value}');
+      final formData = Map<String, dynamic>.from(formCreate.currentState!.value);
+      formData['userID'] = '35';
+
+      debugPrint('--------- Form Fields ------');
+      formCreate.currentState!.fields.forEach((key, field) {
+        debugPrint('$key: ${field.value}');
       });
-      debugPrint('----------File--------');
+      debugPrint('Full Form Data: $formData');
+
+      debugPrint('---------- File Details --------');
       if (fileimageFile != null) {
         debugPrint('Selected File Path: ${fileimageFile!.path}');
       }
       if (multiPartPhoto != null) {
         debugPrint('Multipart File Name: ${multiPartPhoto!.filename}');
       }
-      debugPrint('----------end--------');
+      debugPrint('---------- End --------');
+
       try {
         final response = await createFromRepository.createForm(
-          form: d.FormData.fromMap(
-           formCreate.currentState!.value,
-          ),
+          form: d.FormData.fromMap(formData),
         );
 
         if (response.statusCode == 201 || response.statusCode == 200) {
