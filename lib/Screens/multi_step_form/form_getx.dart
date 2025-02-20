@@ -15,6 +15,12 @@ class FromController extends GetxController {
   final formKeyEducation = GlobalKey<FormBuilderState>();
 
  // File? fileimageFile;
+  var fileimageFile = Rx<File?>(null);
+
+  void updateImage(File image) {
+    fileimageFile.value = image;
+  }
+
   File? educationImageFile;
   File? emailImageFile;
   File? addressImageFile;
@@ -69,11 +75,6 @@ class FromController extends GetxController {
   //     }
   //   }
   // }
-  var fileimageFile = Rx<File?>(null);
-
-  void updateImage(File image) {
-    fileimageFile.value = image;
-  }
 
 
   Future<void> saveForm() async {
