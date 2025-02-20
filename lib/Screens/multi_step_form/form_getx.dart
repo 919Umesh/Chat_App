@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 import '../../Helper/get_routes.dart';
 import 'form_repo.dart';
 
-//To access the parameter on the any part of the code
-//Get.find<RestWrapperController>().restId
-
 class FromController extends GetxController {
   final formCreate = GlobalKey<FormBuilderState>();
   final formKeyEducation = GlobalKey<FormBuilderState>();
