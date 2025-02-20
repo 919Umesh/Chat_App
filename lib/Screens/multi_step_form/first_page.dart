@@ -12,10 +12,12 @@ class FirstPage extends GetView<FromController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text('Profile Setup',style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400)),
+        title: Text('Profile Setup',
+            style:
+                GoogleFonts.poppins(fontSize: 20, fontWeight: FontWeight.w400)),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: ListView(
           children: [
             const SizedBox(height: 10),
@@ -24,20 +26,26 @@ class FirstPage extends GetView<FromController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Document Identity', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
+                  Text('Document Identity',
+                      style: GoogleFonts.poppins(
+                          fontSize: 14, fontWeight: FontWeight.w400)),
                   const SizedBox(height: 10),
-                  Obx(() =>  CustomImagePicker(
-                    currentImage: controller.fileimageFile.value,
-                    defaultImageAsset: 'assets/images/avatar.jpeg',
-                    onImageSelected: (file, multipartFile) {
-                      controller.fileimageFile.value = file;
-                      controller.multiPartPhoto = multipartFile;
-                    },
-                    bottomSheetIndicatorColor: Colors.green,
-                    tileTextColor: Colors.black,
-                  )),
+                  Obx(
+                    () => CustomImagePicker(
+                      currentImage: controller.fileimageFile.value,
+                      defaultImageAsset: 'assets/images/avatar.jpeg',
+                      onImageSelected: (file, multipartFile) {
+                        controller.fileimageFile.value = file;
+                        controller.multiPartPhoto = multipartFile;
+                      },
+                      bottomSheetIndicatorColor: Colors.green,
+                      tileTextColor: Colors.black,
+                    ),
+                  ),
                   const SizedBox(height: 20),
-                  Text('Full name **', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
+                  Text('Full name **',
+                      style: GoogleFonts.poppins(
+                          fontSize: 14, fontWeight: FontWeight.w400)),
                   const SizedBox(height: 10),
                   FormBuilderTextField(
                     name: 'full_name',
@@ -59,10 +67,10 @@ class FirstPage extends GetView<FromController> {
                   ),
                   const SizedBox(height: 20),
 
-
                   // Contact Number
                   Text('Contact Number (Optional)',
-                      style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
+                      style: GoogleFonts.poppins(
+                          fontSize: 14, fontWeight: FontWeight.w400)),
                   const SizedBox(height: 10),
                   FormBuilderTextField(
                     name: 'contact_number',
