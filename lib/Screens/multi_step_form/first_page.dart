@@ -103,10 +103,6 @@ class FirstPage extends GetView<FromController> {
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: controller.saveForm,
-        child: const Icon(Icons.save),
-      ),
     );
   }
 }
