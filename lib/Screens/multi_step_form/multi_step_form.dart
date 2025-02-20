@@ -90,11 +90,6 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                     Text(
                       'Page ${currentIndex + 1} of 4',
                         style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w600,color: Colors.white)
-                      // style: const TextStyle(
-                      //   fontSize: 18,
-                      //   fontWeight: FontWeight.w600,
-                      //   color: Colors.white,
-                      // ),
                     ),
                   ],
                 ),
