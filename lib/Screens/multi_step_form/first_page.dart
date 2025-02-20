@@ -149,15 +149,13 @@ class FirstPage extends GetView<FromController> {
                     height: 150,
                     defaultImageAsset: 'assets/images/avatar.jpeg',
                     onImageSelected: (file, multipartFile) {
-                           controller.fileimageFile = file;
+                      controller.fileimageFile = file;
                       controller.multiPartPhoto = multipartFile;
-                           controller.update();
+                      controller.update();
                     },
                     borderColor: Colors.blue,
                   ),
                   const SizedBox(height: 20),
-
-                  // Full Name
                   Text('Full name **', style: context.textTheme.titleSmall),
                   const SizedBox(height: 10),
                   FormBuilderTextField(
