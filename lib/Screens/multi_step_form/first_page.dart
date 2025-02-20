@@ -132,18 +132,28 @@ class FirstPage extends GetView<FromController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Image Picker
+                  // CustomImagePicker(
+                  //   currentImage: controller.fileimageFile,
+                  //   defaultImageAsset: 'assets/images/avatar.jpeg',
+                  //   onImageSelected: (file, multipartFile) {
+                  //     controller.fileimageFile = file;
+                  //     controller.multiPartPhoto = multipartFile;
+                  //     controller.update();
+                  //   },
+                  //   radius: 50.0,
+                  //   bottomSheetIndicatorColor: Colors.green,
+                  //   tileTextColor: Colors.black,
+                  // ),
                   CustomImagePicker(
-                    currentImage: controller.fileimageFile,
+                    width: 150,
+                    height: 150,
                     defaultImageAsset: 'assets/images/avatar.jpeg',
                     onImageSelected: (file, multipartFile) {
-                      controller.fileimageFile = file;
+                           controller.fileimageFile = file;
                       controller.multiPartPhoto = multipartFile;
-                      controller.update();
+                           controller.update();
                     },
-                    radius: 50.0,
-                    bottomSheetIndicatorColor: Colors.green,
-                    tileTextColor: Colors.black,
+                    borderColor: Colors.blue,
                   ),
                   const SizedBox(height: 20),
 

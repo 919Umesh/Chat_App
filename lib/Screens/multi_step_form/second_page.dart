@@ -1,4 +1,3 @@
-
 import 'package:chat_app/Screens/multi_step_form/custom_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -25,18 +24,29 @@ class SecondPage extends GetView<FromController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
+                  // CustomImagePicker(
+                  //   currentImage: controller.fileimageFile,
+                  //   defaultImageAsset: 'assets/images/avatar.jpeg',
+                  //   onImageSelected: (file, multipartFile) {
+                  //     controller.fileimageFile = file;
+                  //     controller.multiPartPhoto = multipartFile;
+                  //     controller.update();
+                  //   },
+                  //   // Optional customization
+                  //   radius: 50.0,
+                  //   bottomSheetIndicatorColor: Colors.green,
+                  //   tileTextColor: Colors.black,
+                  // ),
                   CustomImagePicker(
-                    currentImage: controller.fileimageFile,
+                    width: 150,
+                    height: 150,
                     defaultImageAsset: 'assets/images/avatar.jpeg',
                     onImageSelected: (file, multipartFile) {
                       controller.fileimageFile = file;
                       controller.multiPartPhoto = multipartFile;
                       controller.update();
                     },
-                    // Optional customization
-                    radius: 50.0,
-                    bottomSheetIndicatorColor: Colors.green,
-                    tileTextColor: Colors.black,
+                    borderColor: Colors.blue,
                   ),
                   Text(
                     'Phone Number **',
