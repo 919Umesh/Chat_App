@@ -2,6 +2,7 @@ import 'package:chat_app/Screens/multi_step_form/custom_image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'form_getx.dart';
 
 class FirstPage extends GetView<FromController> {
@@ -11,7 +12,7 @@ class FirstPage extends GetView<FromController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Profile Setup'),
+        title:  Text('Profile Setup',style: GoogleFonts.poppins(fontSize: 20,fontWeight: FontWeight.w400)),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -23,6 +24,7 @@ class FirstPage extends GetView<FromController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Text('Full name **', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
                   Obx(() =>  CustomImagePicker(
                     currentImage: controller.fileimageFile.value,
                     defaultImageAsset: 'assets/images/avatar.jpeg',
@@ -34,7 +36,7 @@ class FirstPage extends GetView<FromController> {
                     tileTextColor: Colors.black,
                   )),
                   const SizedBox(height: 20),
-                  Text('Full name **', style: context.textTheme.titleSmall),
+                  Text('Full name **', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
                   const SizedBox(height: 10),
                   FormBuilderTextField(
                     name: 'full_name',
@@ -59,7 +61,7 @@ class FirstPage extends GetView<FromController> {
 
                   // Contact Number
                   Text('Contact Number (Optional)',
-                      style: context.textTheme.titleSmall),
+                      style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
                   const SizedBox(height: 10),
                   FormBuilderTextField(
                     name: 'contact_number',

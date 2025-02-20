@@ -29,11 +29,6 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
 
   final FromController controller = Get.put(FromController());
 
-  void saveData(String key, String value) {
-    setState(() {
-      formData[key] = value;
-    });
-  }
 
   void moveToNextPage() {
     if (currentIndex < pages.length - 1) {
@@ -57,13 +52,50 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
       child: Scaffold(
         body: Column(
           children: [
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
+            //   child: LinearProgressIndicator(
+            //     color: Colors.blue.shade700,
+            //     value: (currentIndex + 1) / 4,
+            //     borderRadius: BorderRadius.circular(10),
+            //     minHeight: 20,
+            //   ),
+            // ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 30),
-              child: LinearProgressIndicator(
-                color: Colors.blue.shade700,
-                value: (currentIndex + 1) / 4,
-                borderRadius: BorderRadius.circular(10),
-                minHeight: 20,
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.blue.shade700, Colors.blue.shade400],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                  ),
+                  borderRadius: BorderRadius.circular(20),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.blue.shade200.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 8,
+                      offset: const Offset(2, 4),
+                    ),
+                  ],
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    const Icon(Icons.book, color: Colors.white, size: 20),
+                    const SizedBox(width: 8),
+                    Text(
+                      'Page ${currentIndex + 1} of 4',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
             Expanded(
@@ -80,54 +112,55 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                 ),
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                GestureDetector(
-                    onTap: currentIndex == 0 ? null : moveToPreviousPage,
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  GestureDetector(
+                      onTap: currentIndex == 0 ? null : moveToPreviousPage,
+                      child: Container(
+                        height: 50,
+                        width: 110,
+                        decoration: BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: const Center(child: Text('Previous')),
+                      )),
+                  GestureDetector(
+                    onTap: () {
+                      switch (currentIndex) {
+                        case 0:
+                          controller.saveForm();
+                          break;
+                        case 1:
+                          controller.saveEducation();
+                          break;
+                        case 2:
+                          Fluttertoast.showToast(msg: ThirdPage.controller.text);
+                          break;
+                        case 3:
+                          Fluttertoast.showToast(msg: FourthPage.controller.text);
+                          break;
+                        default:
+                          Fluttertoast.showToast(msg: 'Invalid Index');
+                          return;
+                      }
+                      moveToNextPage();
+                    },
                     child: Container(
                       height: 50,
                       width: 110,
                       decoration: BoxDecoration(
-                        color: Colors.red,
+                        color: Colors.green,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Center(child: Text('Previous')),
-                    )),
-                GestureDetector(
-                  onTap: () {
-                    switch (currentIndex) {
-                      case 0:
-                        controller.saveForm();
-                        break;
-                      case 1:
-                        controller.saveEducation();
-                        break;
-                      case 2:
-                        saveData('email', ThirdPage.controller.text);
-                        Fluttertoast.showToast(msg: ThirdPage.controller.text);
-                        break;
-                      case 3:
-                        saveData('address', FourthPage.controller.text);
-                        Fluttertoast.showToast(msg: FourthPage.controller.text);
-                        break;
-                      default:
-                        Fluttertoast.showToast(msg: 'Invalid Index');
-                        return;
-                    }
-                    moveToNextPage();
-                  },
-                  child: Container(
-                    height: 50,
-                    width: 110,
-                    decoration: BoxDecoration(
-                      color: Colors.green,
-                      borderRadius: BorderRadius.circular(12),
+                      child: const Center(child: Text('Save & Next')),
                     ),
-                    child: const Center(child: Text('Save & Next')),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
