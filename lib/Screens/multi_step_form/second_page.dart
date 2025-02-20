@@ -24,30 +24,8 @@ class SecondPage extends GetView<FromController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  // CustomImagePicker(
-                  //   currentImage: controller.fileimageFile,
-                  //   defaultImageAsset: 'assets/images/avatar.jpeg',
-                  //   onImageSelected: (file, multipartFile) {
-                  //     controller.fileimageFile = file;
-                  //     controller.multiPartPhoto = multipartFile;
-                  //     controller.update();
-                  //   },
-                  //   // Optional customization
-                  //   radius: 50.0,
-                  //   bottomSheetIndicatorColor: Colors.green,
-                  //   tileTextColor: Colors.black,
-                  // ),
-                  CustomImagePicker(
-                    width: 150,
-                    height: 150,
-                    defaultImageAsset: 'assets/images/avatar.jpeg',
-                    onImageSelected: (file, multipartFile) {
-                      controller.fileimageFile = file;
-                      controller.multiPartPhoto = multipartFile;
-                      controller.update();
-                    },
-                    borderColor: Colors.blue,
-                  ),
+
+
                   Text(
                     'Phone Number **',
                     style: Theme.of(context).textTheme.titleSmall,
