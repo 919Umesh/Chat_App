@@ -28,7 +28,6 @@ class CustomImagePicker extends StatelessWidget {
     );
   }
 
-
   Widget _buildProfileImage() {
     return DottedBorder(
       borderType: BorderType.Rect,
@@ -41,13 +40,13 @@ class CustomImagePicker extends StatelessWidget {
             ? Image.file(
           currentImage!,
           width: double.infinity,
-          height:150,
+          height:180,
           fit: BoxFit.cover,
         )
             : Image.asset(
           defaultImageAsset,
           width:double.infinity,
-          height: 150,
+          height: 180,
           fit: BoxFit.cover,
         ),
       ),

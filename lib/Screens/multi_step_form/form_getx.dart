@@ -14,7 +14,7 @@ class FromController extends GetxController {
   final formCreate = GlobalKey<FormBuilderState>();
   final formKeyEducation = GlobalKey<FormBuilderState>();
 
-  File? fileimageFile;
+ // File? fileimageFile;
   File? educationImageFile;
   File? emailImageFile;
   File? addressImageFile;
@@ -69,6 +69,12 @@ class FromController extends GetxController {
   //     }
   //   }
   // }
+  var fileimageFile = Rx<File?>(null);
+
+  void updateImage(File image) {
+    fileimageFile.value = image;
+  }
+
 
   Future<void> saveForm() async {
     if (multiPartPhoto != null) {
@@ -88,10 +94,7 @@ class FromController extends GetxController {
       debugPrint('Full Form Data: $formData');
 
       debugPrint('---------- File Details --------');
-      if (fileimageFile != null) {
-        debugPrint('Selected File Path: ${fileimageFile!.path}');
-      }
-      if (multiPartPhoto != null) {
+          if (multiPartPhoto != null) {
         debugPrint('Multipart File Name: ${multiPartPhoto!.filename}');
       }
       debugPrint('---------- End --------');
