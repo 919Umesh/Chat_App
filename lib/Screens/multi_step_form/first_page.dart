@@ -24,7 +24,7 @@ class FirstPage extends GetView<FromController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Full name **', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
+                  Text('Document Identity', style: GoogleFonts.poppins(fontSize: 14,fontWeight: FontWeight.w400)),
                   Obx(() =>  CustomImagePicker(
                     currentImage: controller.fileimageFile.value,
                     defaultImageAsset: 'assets/images/avatar.jpeg',

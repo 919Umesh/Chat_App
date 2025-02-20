@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'first_page.dart';
 import 'form_getx.dart';
 import 'second_page.dart';
@@ -88,11 +89,12 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                     const SizedBox(width: 8),
                     Text(
                       'Page ${currentIndex + 1} of 4',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w600,
-                        color: Colors.white,
-                      ),
+                        style: GoogleFonts.poppins(fontSize: 18,fontWeight: FontWeight.w600,color: Colors.white)
+                      // style: const TextStyle(
+                      //   fontSize: 18,
+                      //   fontWeight: FontWeight.w600,
+                      //   color: Colors.white,
+                      // ),
                     ),
                   ],
                 ),
@@ -123,10 +125,10 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                         height: 50,
                         width: 110,
                         decoration: BoxDecoration(
-                          color: Colors.red,
+                          color: Colors.blue,
                           borderRadius: BorderRadius.circular(12),
                         ),
-                        child: const Center(child: Text('Previous')),
+                        child:  Center(child: Text('Previous',style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.white))),
                       )),
                   GestureDetector(
                     onTap: () {
@@ -151,12 +153,12 @@ class _HorizontalStepperFormState extends State<HorizontalStepperForm> {
                     },
                     child: Container(
                       height: 50,
-                      width: 110,
+                      width: 120,
                       decoration: BoxDecoration(
-                        color: Colors.green,
+                        color: Colors.blue,
                         borderRadius: BorderRadius.circular(12),
                       ),
-                      child: const Center(child: Text('Save & Next')),
+                      child:  Center(child: Text('Save & Next', style: GoogleFonts.poppins(fontSize: 16,fontWeight: FontWeight.w500,color: Colors.white))),
                     ),
                   ),
                 ],
